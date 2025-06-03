@@ -30,23 +30,24 @@ No macros, no dependencies, and functional on both X86 and ARM systems.
 ### Functions
 
 ```c
-int                 si_getInt(void);
-unsigned int        si_getUInt(void);
-float               si_getFloat(void);
-double              si_getDouble(void);
+int	si_getInt						( void );
+unsigned int si_getUInt				( void );
 
-long                si_getLong(void);
-unsigned long       si_getULong(void);
-long long           si_getLongLong(void);
-unsigned long long  si_getULongLong(void);
+float si_getFloat					( void );
+double si_getDouble					( void );
 
-int                 si_getChar(void);
-int                 si_getCharFiltered(const char *allowed);
+long si_getLong						( void );
+unsigned long si_getULong			( void );
+long long si_getLongLong			( void );
+unsigned long long si_getULongLong	( void );
 
-char*               si_getCString(void);         // null-terminated
-si_string           si_getString(void);          // byte-counted
+int si_getChar						( void );
+int si_getCharFiltered				( const char *allowed );
 
-bool                si_getBool(void);            // accepts 'y' or 'n'
+char *si_getCString					( void ); // nul terminated
+si_string si_getString				( void ); // byte counted
+
+bool si_getBool						( void ); // accepts y/n
 ```
 
 
