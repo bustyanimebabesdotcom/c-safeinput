@@ -62,7 +62,7 @@ All functions are safe, loop until valid input is received, and print errors to 
 #include <stdlib.h>
 #include <safeinput/safeinput.h>
 
-int main( void ) {
+int main ( void ) {
 
     int dong_counter = si_getInt();
     printf( "You have %d dongs.", dong_counter );
@@ -71,7 +71,7 @@ int main( void ) {
     printf( "My dongs name is %.*s!\n", (int)dong_name.len, dong_name.data );
     free(dong_name.data);
 
-	return 0;
+    return 0;
 }
 ```
 
