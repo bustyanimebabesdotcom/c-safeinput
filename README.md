@@ -1,4 +1,4 @@
-![License](https://img.shields.io/badge/license-Unlicense-blue)
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue)](https://unlicense.org/)
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Status](https://img.shields.io/badge/status-stable-brightgreen)
 ![Version](https://img.shields.io/badge/version-1.1.0-orange)
