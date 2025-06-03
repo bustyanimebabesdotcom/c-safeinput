@@ -48,9 +48,9 @@ si_string           si_getString(void);          // byte-counted
 
 bool                si_getBool(void);            // accepts 'y' or 'n'
 ```
-```
 
-> All functions are safe, loop until valid input is received, and print errors to `stderr`.
+
+All functions are safe, loop until valid input is received, and print errors to `stderr`.
 
 ---
 
