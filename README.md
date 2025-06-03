@@ -44,7 +44,7 @@ unsigned long long si_getULongLong  ( void );
 int si_getChar                      ( void );
 int si_getCharFiltered              ( const char *allowed );
 
-char *si_getCString                 ( void ); // nul terminated
+char *si_getCString                 ( void ); // null terminated
 si_string si_getString              ( void ); // byte counted
 
 bool si_getBool                     ( void ); // accepts y/n
