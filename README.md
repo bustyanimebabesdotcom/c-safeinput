@@ -58,6 +58,8 @@ All functions are safe, loop until valid input is received, and print errors to 
 ### Example Usage
 
 ```c
+#include <stdio.h>
+#include <stdlib.h>
 #include <safeinput/safeinput.h>
 
 int main( void ) {
@@ -67,7 +69,9 @@ int main( void ) {
 
     si_string dong_name = si_getString();
     printf( "My dongs name is %.*s!\n", (int)dong_name.len, dong_name.data );
-    free(name.data);
+    free(dong_name.data);
+
+	return 0;
 }
 ```
 
