@@ -35,7 +35,7 @@
 
 #define _GNU_SOURCE
 
-#define alwaysInline	__attribute__((always_inline))
+#define alwaysInline	__attribute__((always_inline)) inline
 #define cold			__attribute__((cold))
 #define unlikely(x)		__builtin_expect(!!(x), 0)
 
