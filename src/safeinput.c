@@ -33,6 +33,12 @@
  * For more information, see LICENSE or visit <https://unlicense.org/>
  */
 
+#define _GNU_SOURCE
+
+#define alwaysInline	__attribute__((always_inline))
+#define cold			__attribute__((cold))
+#define unlikely(x)		__builtin_expect(!!(x), 0)
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -45,7 +51,7 @@
 /**
  * si_printError - calls fputs into stderr, simple wrapper
  */
-static inline void si_printError ( const char *msg ) {
+static cold void si_printError ( const char *msg ) {
 
 	fputs( msg, stderr );
 }
@@ -58,7 +64,7 @@ static inline void si_printError ( const char *msg ) {
  * 
  * called by si_readByte()
  */
-static inline void si_drainStdin ( void ) {
+static cold void si_drainStdin ( void ) {
 
 	int c;
 
@@ -81,28 +87,28 @@ static inline void si_drainStdin ( void ) {
  * 		1 - on error ( NULL buf or outLen, or maxLen < 1 )
  *	   -1 - on EOF ( caller should check and handle appropriately )
  */
-static inline int si_readByte ( char *buf, size_t maxLen, size_t *outLen ) {
+static alwaysInline int si_readByte ( char *buf, size_t maxLen, size_t *outLen ) {
 
-	if ( !buf || !outLen || maxLen < 1 ) return 1;
+	if ( unlikely( !buf || !outLen || maxLen < 1 )) return 1;
 
 	size_t i = 0;
 	int c;
 
 	for ( ; i < maxLen; i++ ) {
 		c = getchar_unlocked();
-		if ( c == '\n' || c == EOF ) break;
+		if ( unlikely( c == '\n' || c == EOF )) break;
 		buf[i] = (char)c;
 	}
 
 	*outLen = i;
 
-	if ( i == maxLen && c != '\n' && c != EOF ) {
+	if ( unlikely( i == maxLen && c != '\n' && c != EOF )) {
 		si_drainStdin();
 		si_printError( "Input exceeding buffer size. Try again.\n" );
 		return 1;
 	}
 
-	if ( c == EOF && i == 0 ) return EOF;
+	if ( unlikely( c == EOF && i == 0 )) return EOF;
 
 	return 0;
 }
